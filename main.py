@@ -37,3 +37,9 @@ class GestureVolumeApp(ctk.CTk):
         self.volume_bar = ctk.CTkProgressBar(bar_frame, progress_color=ACCENT)
         self.volume_bar.pack(side="left", fill="x", expand=True, padx=16)
         self.volume_bar.set(vc.get_volume())
+
+        if not vc.AVAILABLE:
+            ctk.CTkLabel(
+                self, text="pycaw not available -- showing the gesture but not changing volume",
+                text_color="#8a8a8a",
+            ).pack(pady=(0, 10))
