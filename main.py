@@ -19,3 +19,11 @@ ctk.set_appearance_mode("dark")
 BG = "#0e0f12"
 PANEL = "#1a1c20"
 ACCENT = "#5ec8f8"
+
+
+class GestureVolumeApp(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("Hand Gesture Volume Control")
+        self.geometry("740x640")
+        self.configure(fg_color=BG)
