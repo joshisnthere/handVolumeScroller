@@ -43,3 +43,10 @@ class GestureVolumeApp(ctk.CTk):
                 self, text="pycaw not available -- showing the gesture but not changing volume",
                 text_color="#8a8a8a",
             ).pack(pady=(0, 10))
+
+        self.mp_hands = mp.solutions.hands
+        self.hands = self.mp_hands.Hands(
+            max_num_hands=1, min_detection_confidence=0.6, min_tracking_confidence=0.6,
+        )
+        self.cap = cv2.VideoCapture(0)
+        self._update_frame()
