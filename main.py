@@ -57,3 +57,12 @@ class GestureVolumeApp(ctk.CTk):
             frame = cv2.flip(frame, 1)
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = self.hands.process(rgb)
+
+            if results.multi_hand_landmarks:
+                lm = results.multi_hand_landmarks[0].landmark
+                thumb = np.array([lm[4].x, lm[4].y])
+                index = np.array([lm[8].x, lm[8].y])
+                distance = float(np.linalg.norm(thumb - index))
+                level = min(1.0, max(0.0, (distance - 0.03) / 0.25))
+                vc.set_volume(level)
+                self.volume_bar.set(level)
