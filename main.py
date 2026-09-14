@@ -79,3 +79,9 @@ class GestureVolumeApp(ctk.CTk):
             photo = ImageTk.PhotoImage(img)
             self.video_label.configure(image=photo)
             self.video_label.image = photo
+
+        self.after(20, self._update_frame)
+
+    def destroy(self):
+        self.cap.release()
+        super().destroy()
