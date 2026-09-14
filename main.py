@@ -66,3 +66,11 @@ class GestureVolumeApp(ctk.CTk):
                 level = min(1.0, max(0.0, (distance - 0.03) / 0.25))
                 vc.set_volume(level)
                 self.volume_bar.set(level)
+
+                h, w, _ = frame.shape
+                p1 = (int(thumb[0] * w), int(thumb[1] * h))
+                p2 = (int(index[0] * w), int(index[1] * h))
+                cv2.line(frame, p1, p2, (94, 200, 248), 3)
+                cv2.circle(frame, p1, 8, (94, 200, 248), -1)
+                cv2.circle(frame, p2, 8, (94, 200, 248), -1)
+                rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
