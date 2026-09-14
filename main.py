@@ -50,3 +50,10 @@ class GestureVolumeApp(ctk.CTk):
         )
         self.cap = cv2.VideoCapture(0)
         self._update_frame()
+
+    def _update_frame(self):
+        ok, frame = self.cap.read()
+        if ok:
+            frame = cv2.flip(frame, 1)
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            results = self.hands.process(rgb)
