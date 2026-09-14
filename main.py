@@ -74,3 +74,8 @@ class GestureVolumeApp(ctk.CTk):
                 cv2.circle(frame, p1, 8, (94, 200, 248), -1)
                 cv2.circle(frame, p2, 8, (94, 200, 248), -1)
                 rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+            img = Image.fromarray(rgb).resize((700, 460))
+            photo = ImageTk.PhotoImage(img)
+            self.video_label.configure(image=photo)
+            self.video_label.image = photo
