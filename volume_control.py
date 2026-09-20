@@ -8,3 +8,11 @@ try:
     from ctypes import cast, POINTER
     from comtypes import CLSCTX_ALL
     from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+
+    _devices = AudioUtilities.GetSpeakers()
+    _interface = _devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    _volume = cast(_interface, POINTER(IAudioEndpointVolume))
+    AVAILABLE = True
+except Exception:
+    AVAILABLE = False
+    _volume = None
