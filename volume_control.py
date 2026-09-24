@@ -22,3 +22,9 @@ def get_volume():
     if not AVAILABLE:
         return 0.5
     return _volume.GetMasterVolumeLevelScalar()
+
+
+def set_volume(level):
+    level = max(0.0, min(1.0, level))
+    if AVAILABLE:
+        _volume.SetMasterVolumeLevelScalar(level, None)
