@@ -16,3 +16,9 @@ try:
 except Exception:
     AVAILABLE = False
     _volume = None
+
+
+def get_volume():
+    if not AVAILABLE:
+        return 0.5
+    return _volume.GetMasterVolumeLevelScalar()
