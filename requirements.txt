@@ -1,0 +1,7 @@
+customtkinter
+opencv-python
+mediapipe
+pillow
+numpy
+pycaw
+comtypes
